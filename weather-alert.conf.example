@@ -1,0 +1,4 @@
+TWILIO_SID="change me"
+TWILIO_TOKEN="change me"
+FROM_PHONE="+44"
+TO_PHONE="+44"

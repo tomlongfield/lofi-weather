@@ -1,0 +1,8 @@
+[Unit]
+Description=Twilio SMS Weather Alerts
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/weather-alert.sh
+User=root

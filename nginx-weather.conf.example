@@ -1,0 +1,25 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com www.example.com;
+
+    # Optional HTTP to HTTPS redirect
+    # return 301 https://$host$request_uri;
+
+    root /var/www/html;
+    index index.html;
+
+    # Lofi Weather Endpoint
+    location = /weather {
+        alias /var/www/html/weather.txt;
+        default_type text/plain;
+        charset utf-8;
+
+        # Prevent mobile browsers from aggressively caching the weather report
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
