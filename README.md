@@ -16,6 +16,14 @@ This thing is about 40-50% Gemini. They are 2 simple bash scripts and AI tools w
 - **Proactive SMS Alerts (`weather-alert.sh`)**: Checks upcoming weather against custom threshold triggers (default is wind speed > 25mph, temperature drops < 5°C, or snow/thunder hazards) and sends concise SMS alerts using twilio.
 - **Automatic**: Includes unit and timer files for hourly text updating and multi-time daily weather hazard scans.
 
+## Screenshots
+
+**Web Output:**
+![Web Forecast](screenshots/forecast.jpg)
+
+**SMS Alert:**
+![SMS Alert](screenshots/alert.jpg)
+
 ## Prerequisites
 
 - `curl`
