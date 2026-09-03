@@ -28,9 +28,8 @@ This thing is about 40-50% Gemini. They are 2 simple bash scripts and AI tools w
 
 - `curl`
 - `jq`
-- `systemd`
-- `nginx` (optional, for web hosting)
-- A Twilio Account (optional, for SMS alerts)
+- `nginx` (or your chosen way of serving a plain text file)
+- A Twilio Account (for SMS alerts)
 
 ## Installation & Setup
 
