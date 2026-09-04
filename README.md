@@ -12,9 +12,23 @@ This thing is about 40-50% Gemini. They are 2 simple bash scripts and AI tools w
 
 ## Features
 
-- **Text Forecast Generator (`weather-forecast.sh`)**: Compresses dense hourly weather data into compact, readable plain text optimized for small screens. Served statically via Nginx.
-- **Proactive SMS Alerts (`weather-alert.sh`)**: Checks upcoming weather against custom threshold triggers (default is wind speed > 25mph, temperature drops < 5°C, or snow/thunder hazards) and sends concise SMS alerts using twilio.
+- **Text Forecast Generator (`weather-forecast.sh`)**: Compresses hourly weather data into plain text. Served statically via Nginx.
+- **Proactive SMS Alerts (`weather-alert.sh`)**: Checks upcoming weather against threshold triggers (default: wind speed > 25mph, temperature drops < 5°C, or snow/thunder hazards) and sends SMS alerts using twilio.
 - **Automatic**: Includes unit and timer files for hourly text updating and multi-time daily weather hazard scans.
+
+## Recent Updates
+
+**weather-alert.sh**
+- Checks 3-day forecasts for wind, temperature, and weather hazards.
+- Prevents duplicate SMS alerts across scheduled runs and network outages.
+- Verifies successful Twilio delivery before updating internal state.
+- Improves data parsing stability and error handling.
+
+**weather-forecast.sh**
+- Caches forecasts per location to maintain data during API failures.
+- Writes files atomically to prevent web clients from loading incomplete text.
+- Optimizes layout for narrow screens (max 41 characters) and fixes formatting for negative temperatures.
+- Consolidates text formatting into direct JSON parsing for better reliability.
 
 ## Screenshots
 
@@ -35,23 +49,29 @@ This thing is about 40-50% Gemini. They are 2 simple bash scripts and AI tools w
 
 1. **Install Scripts:**
 
-    sudo cp weather-forecast.sh weather-alert.sh /usr/local/bin/
-    sudo chmod +x /usr/local/bin/weather-forecast.sh /usr/local/bin/weather-alert.sh
+```bash
+sudo cp weather-forecast.sh weather-alert.sh /usr/local/bin/
+sudo chmod +x /usr/local/bin/weather-forecast.sh /usr/local/bin/weather-alert.sh
+```
 
 2. **Configure Credentials:**
 
-    sudo cp weather-alert.conf.example /etc/weather-alert.conf
-    sudo chmod 600 /etc/weather-alert.conf
-    sudo nano /etc/weather-alert.conf
+```bash
+sudo cp weather-alert.conf.example /etc/weather-alert.conf
+sudo chmod 600 /etc/weather-alert.conf
+sudo nano /etc/weather-alert.conf
+```
 
 3. **Install Systemd Units:**
 
-    sudo cp *.service *.timer /etc/systemd/system/
-    sudo systemctl daemon-reload
-    sudo systemctl enable --now weather-forecast.timer weather-alert.timer
+```bash
+sudo cp *.service *.timer /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now weather-forecast.timer weather-alert.timer
+```
 
 4. **Nginx Configuration:**
-   Add the location block from `nginx-weather.conf.example` to your Nginx server configuration to serve `/weather` as `text/plain` with caching disabled.
+Add the location block from `nginx-weather.conf.example` to your Nginx server configuration to serve `/weather` as `text/plain` with caching disabled.
 
 ## License
 
