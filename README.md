@@ -8,7 +8,7 @@ If this stuff isn't relatively self explanatory it is probably not for you!
 When bandwidth is extremely low and signal fractional this is a very low bandwidth way to either receive Alerts via SMS (if no internet access) or get a forecast (with even EDGE/2G/whatever you can get)
 
 ## AI Use
-This thing is about 40-50% Gemini. They are 2 simple bash scripts and AI tools were used to generate this readme, do the endless sed bit to compress the weather conditions and genericise some of the stuff from what I was using.
+This thing was about 40-50% Gemini. They are 2 simple bash scripts and AI tools were used to generate this readme, do the endless sed bit to compress the weather conditions and genericise some of the stuff from what I was using.  Since then I have used gemini to add error handling, logging, and a bunch of other stuff. It is probably now mostly gemini.
 
 ## Features
 
