@@ -1,8 +1,9 @@
 [Unit]
-Description=Grab weather forecast on the hour
+Description=Run Cannich Weather Script Every 3 Hours
 
 [Timer]
-OnCalendar=*-*-* 00/1:00:00
+OnCalendar=hourly
+RandomizedDelaySec=5m
 Persistent=true
 
 [Install]

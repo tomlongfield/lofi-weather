@@ -1,8 +1,9 @@
 [Unit]
-Description=Run Weather Alerts daily at 05:00, 11:00, and 17:00
+Description=Run Weather Alerts Hourly
 
 [Timer]
-OnCalendar=*-*-* 05,11,17:00:00
+OnCalendar=hourly
+RandomizedDelaySec=5m
 Persistent=true
 
 [Install]
